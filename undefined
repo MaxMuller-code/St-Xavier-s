@@ -1,0 +1,5 @@
+import StreamsPage from "@/components/StreamsPage";
+
+export default function StreamsStoryboard() {
+  return <StreamsPage />;
+}

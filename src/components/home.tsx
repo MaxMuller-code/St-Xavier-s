@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header";
 import HeroSection from "./HeroSection";
 import QuickAccessSection from "./QuickAccessSection";
+import StatisticsSection from "./StatisticsSection";
 import Footer from "./Footer";
 
 interface HomePageProps {
@@ -54,6 +55,8 @@ const HomePage = ({
           missionStatement={heroContent?.missionStatement}
           bannerImage={heroContent?.bannerImage}
         />
+
+        <StatisticsSection />
 
         <QuickAccessSection cards={quickAccessCards} />
       </main>

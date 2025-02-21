@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "./ui/button";
+import { motion } from "framer-motion";
 
 interface HeroSectionProps {
   logo?: string;
@@ -15,54 +16,102 @@ const HeroSection = ({
   onNavigate = (path: string) => console.log(`Navigating to ${path}`),
 }: HeroSectionProps) => {
   return (
-    <div className="relative w-full h-[600px] bg-gray-100">
-      {/* Banner Image */}
-      <div className="absolute inset-0">
+    <div className="relative w-full h-[700px] bg-gray-100 overflow-hidden">
+      {/* Banner Image with Parallax Effect */}
+      <motion.div
+        initial={{ scale: 1.2 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.5 }}
+        className="absolute inset-0"
+      >
         <img
           src={bannerImage}
           alt="School Banner"
           className="w-full h-full object-cover"
         />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <div className="mb-8">
+        <motion.div
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-8"
+        >
           <img
             src={logo}
             alt="School Logo"
-            className="w-32 h-32 md:w-40 md:h-40 bg-white p-4 rounded-lg shadow-xl"
+            className="w-48 h-32 md:w-64 md:h-40 bg-white/90 p-4 rounded-lg shadow-xl backdrop-blur-sm object-contain mx-auto flex items-center justify-center"
           />
-        </div>
+        </motion.div>
 
-        {/* Mission Statement */}
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Welcome to Our School
-          </h1>
-          <p className="text-lg md:text-xl text-white mb-8">
+        {/* Text Content */}
+        <div className="text-center max-w-4xl mx-auto">
+          <motion.h1
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight"
+          >
+            Welcome to St. Xavier's Global School
+          </motion.h1>
+          <motion.p
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed"
+          >
             {missionStatement}
-          </p>
-          <div className="flex gap-4 justify-center">
+          </motion.p>
+
+          {/* Buttons */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center"
+          >
             <Button
               size="lg"
-              className="bg-white text-black hover:bg-gray-100"
+              className="bg-white hover:bg-gray-50 text-primary font-semibold text-lg px-10 py-7 rounded-lg transition-colors"
               onClick={() => onNavigate("/about")}
             >
-              Learn More
+              Discover Our Programs
             </Button>
+
             <Button
               size="lg"
               variant="outline"
-              className="text-white border-white hover:bg-white/20"
+              className="bg-transparent hover:bg-white/10 text-white border-2 border-white text-lg px-10 py-7 rounded-lg transition-colors"
               onClick={() => onNavigate("/contact")}
             >
-              Contact Us
+              Start Your Journey
             </Button>
-          </div>
+          </motion.div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 1 }}
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+              className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center p-2"
+            >
+              <motion.div
+                animate={{ y: [0, 12, 0] }}
+                transition={{ repeat: Infinity, duration: 1.5 }}
+                className="w-1 h-1 bg-white/50 rounded-full"
+              />
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </div>

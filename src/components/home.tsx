@@ -3,6 +3,8 @@ import Header from "./Header";
 import HeroSection from "./HeroSection";
 import QuickAccessSection from "./QuickAccessSection";
 import StatisticsSection from "./StatisticsSection";
+import LearningEnvironmentSection from "./LearningEnvironmentSection";
+import IntegrationSection from "./IntegrationSection";
 import Footer from "./Footer";
 
 interface HomePageProps {
@@ -57,6 +59,10 @@ const HomePage = ({
         />
 
         <StatisticsSection />
+
+        <LearningEnvironmentSection />
+
+        <IntegrationSection />
 
         <QuickAccessSection cards={quickAccessCards} />
       </main>

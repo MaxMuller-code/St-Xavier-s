@@ -5,7 +5,10 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 
 import { TempoDevtools } from "tempo-devtools";
+import { preventCopyPaste } from "./lib/preventCopy";
+
 TempoDevtools.init();
+preventCopyPaste();
 
 const basename = import.meta.env.BASE_URL;
 

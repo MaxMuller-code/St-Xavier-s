@@ -1,10 +1,13 @@
 import React from "react";
 import Header from "./Header";
 import HeroSection from "./HeroSection";
-import QuickAccessSection from "./QuickAccessSection";
+import MissionSection from "./MissionSection";
+import TakeActionSection from "./TakeActionSection";
 import StatisticsSection from "./StatisticsSection";
 import LearningEnvironmentSection from "./LearningEnvironmentSection";
 import IntegrationSection from "./IntegrationSection";
+import PathwaysSection from "./PathwaysSection";
+import SocialSection from "./SocialSection";
 import Footer from "./Footer";
 
 interface HomePageProps {
@@ -64,7 +67,12 @@ const HomePage = ({
 
         <IntegrationSection />
 
-        <QuickAccessSection cards={quickAccessCards} />
+        <PathwaysSection />
+
+        <SocialSection />
+
+        <MissionSection />
+        <TakeActionSection />
       </main>
 
       <Footer
